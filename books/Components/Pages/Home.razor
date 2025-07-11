@@ -1,7 +1,27 @@
 ﻿@page "/"
+@using MudBlazor
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<MudText Typo="Typo.h4" Color="Color.Primary">
+    Привет, MudBlazor работает!
+</MudText>
+
+<MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@(() => clicked = true)">
+    Нажми меня
+</MudButton>
+
+@if (clicked)
+{
+<MudAlert Severity="Severity.Success">
+    Ты нажал кнопку 🎉 MudBlazor подключен!
+</MudAlert>
+}
+
+@code {
+    bool clicked = false;
+}
