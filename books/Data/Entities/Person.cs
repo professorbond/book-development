@@ -16,8 +16,8 @@ namespace MyBlazorApp.Data.Entities
         public string? Note { get; set; }
         [ForeignKey("City")]
         public int CityId { get; set; }
-
-
+        [Required]  
+        public City City { get; set; } = null!;
         public List<Phone> Phones { get; set; } = new();
     }
 }

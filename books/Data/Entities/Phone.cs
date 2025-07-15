@@ -8,7 +8,7 @@ namespace MyBlazorApp.Data.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required]  
         public string PhoneNumber { get; set; } = null!;
         [Required]
         public bool IsBankLinked { get; set; }

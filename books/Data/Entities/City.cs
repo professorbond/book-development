@@ -10,7 +10,7 @@ namespace MyBlazorApp.Data.Entities
         public int Id { get; set; }
         [StringLength(100)]
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public List<Person> People { get; set; } = new();
 
