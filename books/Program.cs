@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using MyBlazorApp.Data;
 using books.Components;
 using MudBlazor.Services;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql("Host=localhost;Port=1111;Database=mydb;Username=postgres;Password=vlbond007$"));
+
 builder.Services.AddMudServices();
 // Add services to the container.
 builder.Services.AddRazorComponents()
