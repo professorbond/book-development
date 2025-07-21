@@ -2,24 +2,47 @@
 @using MyBlazorApp.Data.Entities
 @using MyBlazorApp.Data
 @using Microsoft.EntityFrameworkCore
-
 @inject AppDbContext Db
+@using MudBlazor
+<MudTextField @bind-Value="_searchString"
+              Placeholder="Поиск"
+              Adornment="Adornment.Start"
+              AdornmentIcon="@Icons.Material.Filled.Search"
+              Immediate="true"
+              Class="mb-3" />
 
-<MudDataGrid Items="@Elements.Take(5)">
+<MudDataGrid T="Person"
+             Items="@AllElements"
+             QuickFilter="_quickFilter"
+             Filterable="true"
+             Hover="true"
+             Dense="true">
     <Columns>
-        <PropertyColumn Property="x => x.Id" Title="ID" />
-        <PropertyColumn Property="x => x.FirstName" />
-        <PropertyColumn Property="x => x.MiddleName" />
-        <PropertyColumn Property="x => x.LastName" />
-        <PropertyColumn Property="x => x.Note" />
+        <PropertyColumn Property="x => x.Id" Title="ID" Sortable="false" Filterable="false" />
+        <PropertyColumn Property="x => x.FirstName" Title="Имя" />
+        <PropertyColumn Property="x => x.MiddleName" Title="Отчество" />
+        <PropertyColumn Property="x => x.LastName" Title="Фамилия" />
+        <PropertyColumn Property="x => x.Note" Title="Заметка" />
     </Columns>
 </MudDataGrid>
 
 @code {
-    private IEnumerable<Person> Elements = new List<Person>();
+    private List<Person> AllElements = new();
+    private string _searchString = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
-        Elements = await Db.People.ToListAsync();
+        AllElements = await Db.People.ToListAsync();
     }
+
+    private Func<Person, bool> _quickFilter => x =>
+    {
+        if (string.IsNullOrWhiteSpace(_searchString))
+            return true;
+
+        return (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
+    };
 }
