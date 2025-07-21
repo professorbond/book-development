@@ -4,6 +4,7 @@
 @using Microsoft.EntityFrameworkCore
 @inject AppDbContext Db
 @using MudBlazor
+
 <MudTextField @bind-Value="_searchString"
               Placeholder="Поиск"
               Adornment="Adornment.Start"
@@ -13,7 +14,7 @@
 
 <MudDataGrid T="Person"
              Items="@AllElements"
-             QuickFilter="_quickFilter"
+             QuickFilter="FilterPerson"
              Filterable="true"
              Hover="true"
              Dense="true">
@@ -35,14 +36,14 @@
         AllElements = await Db.People.ToListAsync();
     }
 
-    private Func<Person, bool> _quickFilter => x =>
+    private bool FilterPerson(Person x)
     {
-        if (string.IsNullOrWhiteSpace(_searchString))
-            return true;
+    if (string.IsNullOrWhiteSpace(_searchString))
+        return true;
 
-        return (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-            || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-            || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-            || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
-    };
+    return (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
+    }
 }
