@@ -1,0 +1,23 @@
+@page "/cities"
+@using MyBlazorApp.Data.Entities
+@using MyBlazorApp.Data
+@using Microsoft.EntityFrameworkCore
+@using MudBlazor
+@inject AppDbContext Db
+<MudDataGrid T="City" 
+             Items="AllElements">
+    <Columns>
+        <PropertyColumn Property="x => x.Id"/>
+        <PropertyColumn Property="x => x.Name"/>
+    </Columns>
+</MudDataGrid>
+@code
+{
+    private List<City> AllElements = new();
+    private string SearchString = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllElements = await Db.Cities.ToListAsync();
+    }
+}
