@@ -4,13 +4,27 @@
 @using Microsoft.EntityFrameworkCore
 @using MudBlazor
 @inject AppDbContext Db
+<MudTextField @bind-Value="SearchString"
+              Placeholder="Поиск"
+              Adornment="Adornment.Start"
+              AdornmentIcon="@Icons.Material.Filled.Search"
+              Immediate="true"
+              Class="mb-3"/>
+
 <MudDataGrid T="City" 
-             Items="AllElements">
+             Items="@AllElements"
+             QuickFilter="FilterCity"
+             Filterable="true"
+             Hover="true"
+             Dense="true">
+
     <Columns>
         <PropertyColumn Property="x => x.Id"/>
         <PropertyColumn Property="x => x.Name"/>
     </Columns>
+
 </MudDataGrid>
+
 @code
 {
     private List<City> AllElements = new();
@@ -19,5 +33,17 @@
     protected override async Task OnInitializedAsync()
     {
         AllElements = await Db.Cities.ToListAsync();
+    }
+    private bool FilterCity(City x)
+    {
+        if(string.IsNullOrWhiteSpace(SearchString)) 
+        {
+            return true;
+        }
+        else
+        {
+            return (x.Name?.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ?? false);
+        }
+        
     }
 }
