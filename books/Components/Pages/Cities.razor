@@ -4,6 +4,12 @@
 @using Microsoft.EntityFrameworkCore
 @using MudBlazor
 @inject AppDbContext Db
+@inject IDialogService DialogService
+
+<MudButton @onclick="OpenDialogAsync" Variant="Variant.Filled" Color="Color.Primary">
+    Open simple dialog
+</MudButton>
+
 <MudTextField @bind-Value="SearchString"
               Placeholder="Поиск"
               Adornment="Adornment.Start"
@@ -45,5 +51,17 @@
             return (x.Name?.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ?? false);
         }
         
+    }
+    private async Task OpenDialogAsync()  
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+
+        var dialog = await DialogService.ShowAsync<AddCityDialog>("Simple Dialog", options);
+        var result = await dialog.Result;
+        if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
+        {
+            Db.Cities.Add(new City { Name = cityName });
+            await Db.SaveChangesAsync();
+        }
     }
 }

@@ -45,7 +45,8 @@
     }
     else
     {
-        return (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        return (x.Id.ToString()?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        || (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
         || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
         || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
         || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);

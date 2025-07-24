@@ -1,0 +1,32 @@
+@using MudBlazor
+<MudDialog>
+    <TitleContent>
+        Dialog Title
+    </TitleContent>
+
+    <DialogContent>
+        <MudTextField @bind-Value="CityName" Label="Название города" Variant="Variant.Outlined" />
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Добавить</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; }
+
+    private string CityName { get; set; }
+
+    private void Submit()
+    {
+        MudDialog.Close(DialogResult.Ok(CityName));
+    }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+}
