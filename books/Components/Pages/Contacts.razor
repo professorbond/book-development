@@ -2,8 +2,9 @@
 @using MyBlazorApp.Data.Entities
 @using MyBlazorApp.Data
 @using Microsoft.EntityFrameworkCore
-@inject AppDbContext Db
 @using MudBlazor
+
+@inject AppDbContext Db
 
 <MudTextField @bind-Value="_searchString"
               Placeholder="Поиск"
@@ -25,6 +26,12 @@
         <PropertyColumn Property="x => x.LastName" Title="Фамилия" />
         <PropertyColumn Property="x => x.Note" Title="Заметка" />
         <PropertyColumn Property="x => x.CityId" Title="вторичный ключ" />
+        
+        <TemplateColumn Title="Мобила">
+            <CellTemplate>
+                @string.Join(", ", context.Item.Phones.Select(p => p.PhoneNumber))
+            </CellTemplate>
+        </TemplateColumn>
     </Columns>
 </MudDataGrid>
 
@@ -34,22 +41,21 @@
 
     protected override async Task OnInitializedAsync()
     {
-        AllElements = await Db.People.ToListAsync();
+        AllElements = await Db.People.Include(p => p.Phones).ToListAsync();
     }
 
     private bool FilterPerson(Person x)
     {
-    if (string.IsNullOrWhiteSpace(_searchString))
-    {
-        return true;
-    }
-    else
-    {
+        if (string.IsNullOrWhiteSpace(_searchString))
+        {
+            return true;
+        }
+
         return (x.Id.ToString()?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-        || (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-        || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-        || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-        || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
-    }
+            || (x.FirstName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.LastName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.MiddleName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.Note?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.Phones.Any(p => p.PhoneNumber.Contains(_searchString, StringComparison.OrdinalIgnoreCase)));
     }
 }
