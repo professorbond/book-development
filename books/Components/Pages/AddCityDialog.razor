@@ -1,8 +1,14 @@
 @using MudBlazor
+@using MyBlazorApp.Data
+@using Microsoft.EntityFrameworkCore
+
+@inject AppDbContext Db
+@inject ISnackbar Snackbar
+
 <MudDialog>
     <TitleContent>
         Dialog Title
-    </TitleContent>
+    </TitleContent> 
 
     <DialogContent>
         <MudTextField @bind-Value="CityName" Label="Название города" Variant="Variant.Outlined" />
@@ -20,8 +26,15 @@
 
     private string CityName { get; set; }
 
-    private void Submit()
+    private async Task Submit()
     {
+        var exists = await Db.Cities.AnyAsync(c => c.Name == CityName);
+        if (exists == true)
+        {
+            Snackbar.Add("Такой город уже существует", Severity.Error);
+            return;
+        }
+
         MudDialog.Close(DialogResult.Ok(CityName));
     }
 
