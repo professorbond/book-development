@@ -28,10 +28,16 @@
 
     private async Task Submit()
     {
-        var exists = await Db.Cities.AnyAsync(c => c.Name == CityName);
+        var exists = await Db.Cities.AnyAsync(c => c.Name.ToLower() == CityName.ToLower());
         if (exists == true)
         {
             Snackbar.Add("Такой город уже существует", Severity.Error);
+            return;
+        }
+
+        if(CityName.All(char.IsDigit))
+        {
+            Snackbar.Add("Название города не может состоять из цифр", Severity.Error);
             return;
         }
 

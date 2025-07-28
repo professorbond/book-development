@@ -1,0 +1,360 @@
+Структура папок
+Серийный номер тома: 5C91-C1A7
+C:.
+|   appsettings.Development.json
+|   appsettings.json
+|   books.csproj
+|   books.csproj.user
+|   Program.cs
+|   structure.txt
+|   
++---bin
+|   \---Debug
+|       \---net9.0
+|           |   appsettings.Development.json
+|           |   appsettings.json
+|           |   books.deps.json
+|           |   books.dll
+|           |   books.exe
+|           |   books.pdb
+|           |   books.runtimeconfig.json
+|           |   books.staticwebassets.endpoints.json
+|           |   books.staticwebassets.runtime.json
+|           |   Humanizer.dll
+|           |   Microsoft.AspNetCore.Authorization.dll
+|           |   Microsoft.AspNetCore.Components.dll
+|           |   Microsoft.AspNetCore.Components.Forms.dll
+|           |   Microsoft.AspNetCore.Components.Web.dll
+|           |   Microsoft.AspNetCore.Metadata.dll
+|           |   Microsoft.Bcl.AsyncInterfaces.dll
+|           |   Microsoft.Build.Locator.dll
+|           |   Microsoft.CodeAnalysis.CSharp.dll
+|           |   Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+|           |   Microsoft.CodeAnalysis.dll
+|           |   Microsoft.CodeAnalysis.Workspaces.dll
+|           |   Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+|           |   Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+|           |   Microsoft.EntityFrameworkCore.Abstractions.dll
+|           |   Microsoft.EntityFrameworkCore.Design.dll
+|           |   Microsoft.EntityFrameworkCore.dll
+|           |   Microsoft.EntityFrameworkCore.Relational.dll
+|           |   Microsoft.Extensions.Caching.Abstractions.dll
+|           |   Microsoft.Extensions.Caching.Memory.dll
+|           |   Microsoft.Extensions.Configuration.Abstractions.dll
+|           |   Microsoft.Extensions.DependencyInjection.Abstractions.dll
+|           |   Microsoft.Extensions.DependencyInjection.dll
+|           |   Microsoft.Extensions.DependencyModel.dll
+|           |   Microsoft.Extensions.Localization.Abstractions.dll
+|           |   Microsoft.Extensions.Localization.dll
+|           |   Microsoft.Extensions.Logging.Abstractions.dll
+|           |   Microsoft.Extensions.Logging.dll
+|           |   Microsoft.Extensions.Options.dll
+|           |   Microsoft.Extensions.Primitives.dll
+|           |   Microsoft.JSInterop.dll
+|           |   Mono.TextTemplating.dll
+|           |   MudBlazor.dll
+|           |   Npgsql.dll
+|           |   Npgsql.EntityFrameworkCore.PostgreSQL.dll
+|           |   System.CodeDom.dll
+|           |   System.Composition.AttributedModel.dll
+|           |   System.Composition.Convention.dll
+|           |   System.Composition.Hosting.dll
+|           |   System.Composition.Runtime.dll
+|           |   System.Composition.TypedParts.dll
+|           |   System.Text.Json.dll
+|           |   
+|           +---cs
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---de
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---es
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---fr
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---it
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---ja
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---ko
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---pl
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---pt-BR
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---ru
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---tr
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           +---zh-Hans
+|           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+|           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|           |       Microsoft.CodeAnalysis.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+|           |       
+|           \---zh-Hant
+|                   Microsoft.CodeAnalysis.CSharp.resources.dll
+|                   Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+|                   Microsoft.CodeAnalysis.resources.dll
+|                   Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+|                   Microsoft.CodeAnalysis.Workspaces.resources.dll
+|                   
++---Components
+|   |   App.razor
+|   |   Routes.razor
+|   |   _Imports.razor
+|   |   
+|   +---Layout
+|   |       MainLayout.razor
+|   |       MainLayout.razor.css
+|   |       NavMenu.razor
+|   |       NavMenu.razor.css
+|   |       
+|   \---Pages
+|           AddCityDialog.razor
+|           Cities.razor
+|           Contacts.razor
+|           Counter.razor
+|           DeleteCityDialog.razor
+|           Error.razor
+|           Home.razor
+|           Weather.razor
+|           
++---Data
+|   +---EF
+|   |       AppDbContext.cs
+|   |       
+|   \---Entities
+|           City.cs
+|           Person.cs
+|           Phone.cs
+|           
++---Migrations
+|       20250715153345_InitialCreate.cs
+|       20250715153345_InitialCreate.Designer.cs
+|       20250716121525_SeedInitialData.cs
+|       20250716121525_SeedInitialData.Designer.cs
+|       20250724095434_AddMorePhones.cs
+|       20250724095434_AddMorePhones.Designer.cs
+|       AppDbContextModelSnapshot.cs
+|       
++---obj
+|   |   books.csproj.EntityFrameworkCore.targets
+|   |   books.csproj.nuget.dgspec.json
+|   |   books.csproj.nuget.g.props
+|   |   books.csproj.nuget.g.targets
+|   |   project.assets.json
+|   |   project.nuget.cache
+|   |   
+|   \---Debug
+|       \---net9.0
+|           |   .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+|           |   apphost.exe
+|           |   books.AssemblyInfo.cs
+|           |   books.AssemblyInfoInputs.cache
+|           |   books.assets.cache
+|           |   books.csproj.AssemblyReference.cache
+|           |   books.csproj.CoreCompileInputs.cache
+|           |   books.csproj.FileListAbsolute.txt
+|           |   books.csproj.Up2Date
+|           |   books.dll
+|           |   books.GeneratedMSBuildEditorConfig.editorconfig
+|           |   books.genruntimeconfig.cache
+|           |   books.GlobalUsings.g.cs
+|           |   books.MvcApplicationPartsAssemblyInfo.cache
+|           |   books.pdb
+|           |   books.sourcelink.json
+|           |   rbcswa.dswa.cache.json
+|           |   rjimswa.dswa.cache.json
+|           |   rjsmcshtml.dswa.cache.json
+|           |   rjsmrazor.dswa.cache.json
+|           |   rpswa.dswa.cache.json
+|           |   staticwebassets.build.endpoints.json
+|           |   staticwebassets.build.json
+|           |   staticwebassets.build.json.cache
+|           |   staticwebassets.development.json
+|           |   staticwebassets.removed.txt
+|           |   
+|           +---compressed
+|           |       0159qfpn76-b7pk76d08c.gz
+|           |       0wz98yz2xy-b8x8f7e52z.gz
+|           |       11vhbf18s9-rzd6atqjts.gz
+|           |       1ei05i3o5t-ausgxo2sd3.gz
+|           |       26kjlgmy5q-pj5nd1wqec.gz
+|           |       30fetlp4ui-nvvlpmu67g.gz
+|           |       5pkxsihxfz-aexeepp0ev.gz
+|           |       757z5ao9g6-d7shbmvgxk.gz
+|           |       75kz2gdbo1-01k54ym6c5.gz
+|           |       7yjjf05g4h-khy4lop6wu.gz
+|           |       9qai3gyt9y-jj8uyg4cgr.gz
+|           |       ai62m3mm5y-ft3s53vfgj.gz
+|           |       b05mft7kn2-r4e9w2rdcm.gz
+|           |       bej1gk2ikj-46ein0sx1k.gz
+|           |       bmuyulr0nz-0j3bgjxly4.gz
+|           |       c9h138si9n-493y06b0oq.gz
+|           |       d9kreuy98v-iovd86k7lj.gz
+|           |       diwpxpwx03-fsbi9cje9m.gz
+|           |       dmtp3llt43-s35ty4nyc5.gz
+|           |       ep2ncopjj2-y7v9cxd14o.gz
+|           |       fgsyvloavo-kbrnm935zg.gz
+|           |       fj4uiuncnu-bqjiyaj88i.gz
+|           |       go47yrk5vr-tdbxkamptv.gz
+|           |       hh61qq5ib9-cosvhxvwiu.gz
+|           |       j03hg3sjqo-khv3u5hwcm.gz
+|           |       j1bmowrevz-fvhpjtyr6v.gz
+|           |       jrhcf9q1h5-k8d9w2qqmf.gz
+|           |       ksm1bwos40-06098lyss8.gz
+|           |       kygjwzavck-01k54ym6c5.gz
+|           |       ln4uy5syb7-lcd1t2u6c8.gz
+|           |       mc1cs731i4-6cfz1n2cew.gz
+|           |       n3nauhesvx-6pdc2jztkx.gz
+|           |       no5jtk83x9-dxx9fxp4il.gz
+|           |       ohg3fzwi99-37tfw0ft22.gz
+|           |       ou6j35kprr-j5mq2jizvt.gz
+|           |       p72eojs15b-v0zj4ognzu.gz
+|           |       pcjpf1aalu-erw9l3u2r3.gz
+|           |       pcjtt26cdd-ee0r1s7dh0.gz
+|           |       pirulmqgl1-c2jlpeoesf.gz
+|           |       tlg9ja07rc-ub07r2b239.gz
+|           |       tzxjg6is5z-sowobu9fea.gz
+|           |       ujus61zul5-63fj8s7r0e.gz
+|           |       uqti4vhi36-h1s4sie4z3.gz
+|           |       vyzcowr2t0-jd9uben2k1.gz
+|           |       wckplk2uir-notf2xhcfb.gz
+|           |       wja290nxoi-vr1egmr9el.gz
+|           |       y0kq4s6i9u-hrwsygsryq.gz
+|           |       zanp38jvzi-c2oey78nd0.gz
+|           |       zxlvldpj60-pk9g2wxc8p.gz
+|           |       
+|           +---ref
+|           |       books.dll
+|           |       
+|           +---refint
+|           |       books.dll
+|           |       
+|           +---scopedcss
+|           |   +---bundle
+|           |   |       books.styles.css
+|           |   |       
+|           |   +---Components
+|           |   |   \---Layout
+|           |   |           MainLayout.razor.rz.scp.css
+|           |   |           NavMenu.razor.rz.scp.css
+|           |   |           
+|           |   \---projectbundle
+|           |           books.bundle.scp.css
+|           |           
+|           \---staticwebassets
++---Properties
+|       launchSettings.json
+|       
+\---wwwroot
+    |   app.css
+    |   favicon.png
+    |   
+    \---lib
+        \---bootstrap
+            \---dist
+                +---css
+                |       bootstrap-grid.css
+                |       bootstrap-grid.css.map
+                |       bootstrap-grid.min.css
+                |       bootstrap-grid.min.css.map
+                |       bootstrap-grid.rtl.css
+                |       bootstrap-grid.rtl.css.map
+                |       bootstrap-grid.rtl.min.css
+                |       bootstrap-grid.rtl.min.css.map
+                |       bootstrap-reboot.css
+                |       bootstrap-reboot.css.map
+                |       bootstrap-reboot.min.css
+                |       bootstrap-reboot.min.css.map
+                |       bootstrap-reboot.rtl.css
+                |       bootstrap-reboot.rtl.css.map
+                |       bootstrap-reboot.rtl.min.css
+                |       bootstrap-reboot.rtl.min.css.map
+                |       bootstrap-utilities.css
+                |       bootstrap-utilities.css.map
+                |       bootstrap-utilities.min.css
+                |       bootstrap-utilities.min.css.map
+                |       bootstrap-utilities.rtl.css
+                |       bootstrap-utilities.rtl.css.map
+                |       bootstrap-utilities.rtl.min.css
+                |       bootstrap-utilities.rtl.min.css.map
+                |       bootstrap.css
+                |       bootstrap.css.map
+                |       bootstrap.min.css
+                |       bootstrap.min.css.map
+                |       bootstrap.rtl.css
+                |       bootstrap.rtl.css.map
+                |       bootstrap.rtl.min.css
+                |       bootstrap.rtl.min.css.map
+                |       
+                \---js
+                        bootstrap.bundle.js
+                        bootstrap.bundle.js.map
+                        bootstrap.bundle.min.js
+                        bootstrap.bundle.min.js.map
+                        bootstrap.esm.js
+                        bootstrap.esm.js.map
+                        bootstrap.esm.min.js
+                        bootstrap.esm.min.js.map
+                        bootstrap.js
+                        bootstrap.js.map
+                        bootstrap.min.js
+                        bootstrap.min.js.map
+                        
