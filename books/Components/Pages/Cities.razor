@@ -10,6 +10,10 @@
     Добавить город
 </MudButton>
 
+<MudButton @onclick="OpenDeleteDialogAsync" Variant="Variant.Filled" Color="Color.Error">
+    Удалить город
+</MudButton>
+
 <MudTextField @bind-Value="SearchString"
               Placeholder="Поиск"
               Adornment="Adornment.Start"
@@ -28,6 +32,7 @@
         <PropertyColumn Property="x => x.Id"/>
         <PropertyColumn Property="x => x.Name"/>
     </Columns>
+    
 
 </MudDataGrid>
 
@@ -61,6 +66,21 @@
         if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
         {
             Db.Cities.Add(new City { Name = cityName });
+            await Db.SaveChangesAsync();
+            AllElements = await Db.Cities.ToListAsync();
+            StateHasChanged();
+        }
+    }
+    private async Task OpenDeleteDialogAsync()  
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+
+        var dialog = await DialogService.ShowAsync<DeleteCityDialog>("Удалить Город", options);
+        var result = await dialog.Result;
+        if (result != null && result.Data is string IdName && !string.IsNullOrWhiteSpace(IdName))
+        {
+            var city = await Db.Cities.FindAsync(int.Parse(IdName));
+            Db.Cities.Remove(city);
             await Db.SaveChangesAsync();
             AllElements = await Db.Cities.ToListAsync();
             StateHasChanged();

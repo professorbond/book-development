@@ -1,0 +1,47 @@
+@using MudBlazor
+@using MyBlazorApp.Data
+@using Microsoft.EntityFrameworkCore
+
+@inject AppDbContext Db
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <TitleContent>
+        Удалить запись
+    </TitleContent> 
+
+    <DialogContent>
+        <MudTextField @bind-Value="IdName" Label="ID" Variant="Variant.Outlined" />
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Error" OnClick="Submit">Удалить</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; }
+
+    private string IdName { get; set; }
+
+    private async Task Submit()
+    {
+        var exists = await Db.Cities.AnyAsync(c => c.Id.ToString() == IdName);
+        if (exists == true)
+        {
+            MudDialog.Close(DialogResult.Ok(IdName));
+        }
+        else
+        {
+            Snackbar.Add("Город с таким Id не найден. Попробуйте еще раз.", Severity.Error);
+            return;
+        }
+    }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+}
