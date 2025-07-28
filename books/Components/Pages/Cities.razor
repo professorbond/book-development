@@ -62,6 +62,8 @@
         {
             Db.Cities.Add(new City { Name = cityName });
             await Db.SaveChangesAsync();
+            AllElements = await Db.Cities.ToListAsync();
+            StateHasChanged();
         }
     }
 }
