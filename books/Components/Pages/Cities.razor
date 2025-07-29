@@ -7,15 +7,11 @@
     Добавить город
 </MudButton>
 
-<MudButton @onclick="OpenDeleteDialogAsync" Variant="Variant.Filled" Color="Color.Error">
-    Удалить город
-</MudButton>
-
 <MudTextField @bind-Value="SearchString"
               Placeholder="Поиск"
               Adornment="Adornment.Start"
               AdornmentIcon="@Icons.Material.Filled.Search"
-              Immediate="true"
+              Immediate="false"
               Class="mb-3" />
 
 <MudDataGrid T="City"

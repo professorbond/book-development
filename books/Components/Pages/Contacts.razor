@@ -9,7 +9,7 @@
               Placeholder="Поиск"
               Adornment="Adornment.Start"
               AdornmentIcon="@Icons.Material.Filled.Search"
-              Immediate="true"
+              Immediate="false"
               Class="mb-3" />
 
 <MudDataGrid T="Person"
@@ -24,7 +24,6 @@
         <PropertyColumn Property="x => x.MiddleName" Title="Отчество" />
         <PropertyColumn Property="x => x.LastName" Title="Фамилия" />
         <PropertyColumn Property="x => x.Note" Title="Заметка" />
-        <PropertyColumn Property="x => x.CityId" Title="вторичный ключ" />
         
         <TemplateColumn Title="Мобила">
             <CellTemplate>

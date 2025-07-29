@@ -46,20 +46,5 @@ namespace MyBlazorApp.Components.Pages
             }
         }
 
-        private async Task OpenDeleteDialogAsync()
-        {
-            var options = new DialogOptions { CloseOnEscapeKey = true };
-
-            var dialog = await DialogService.ShowAsync<DeleteCityDialog>("Удалить Город", options);
-            var result = await dialog.Result;
-            if (result != null && result.Data is string IdName && !string.IsNullOrWhiteSpace(IdName))
-            {
-                var city = await Db.Cities.FindAsync(int.Parse(IdName));
-                Db.Cities.Remove(city);
-                await Db.SaveChangesAsync();
-                AllElements = await Db.Cities.ToListAsync();
-                StateHasChanged();
-            }
-        }
     }
 }
