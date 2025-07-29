@@ -1,10 +1,7 @@
 @page "/cities"
+@namespace MyBlazorApp.Components.Pages
 @using MyBlazorApp.Data.Entities
-@using MyBlazorApp.Data
-@using Microsoft.EntityFrameworkCore
 @using MudBlazor
-@inject AppDbContext Db
-@inject IDialogService DialogService
 
 <MudButton @onclick="OpenDialogAsync" Variant="Variant.Filled" Color="Color.Primary">
     Добавить город
@@ -19,71 +16,16 @@
               Adornment="Adornment.Start"
               AdornmentIcon="@Icons.Material.Filled.Search"
               Immediate="true"
-              Class="mb-3"/>
+              Class="mb-3" />
 
-<MudDataGrid T="City" 
+<MudDataGrid T="City"
              Items="@AllElements"
              QuickFilter="FilterCity"
              Filterable="true"
              Hover="true"
              Dense="true">
-
     <Columns>
-        <PropertyColumn Property="x => x.Id"/>
-        <PropertyColumn Property="x => x.Name"/>
+        <PropertyColumn Property="x => x.Id" />
+        <PropertyColumn Property="x => x.Name" />
     </Columns>
-    
-
 </MudDataGrid>
-
-@code
-{
-    private List<City> AllElements = new();
-    private string SearchString = string.Empty;
-
-    protected override async Task OnInitializedAsync()
-    {
-        AllElements = await Db.Cities.ToListAsync();
-    }
-    private bool FilterCity(City x)
-    {
-        if(string.IsNullOrWhiteSpace(SearchString)) 
-        {
-            return true;
-        }
-        else
-        {
-            return (x.Name?.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ?? false);
-        }
-        
-    }
-    private async Task OpenDialogAsync()  
-    {
-        var options = new DialogOptions { CloseOnEscapeKey = true };
-
-        var dialog = await DialogService.ShowAsync<AddCityDialog>("Добавить Город", options);
-        var result = await dialog.Result;
-        if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
-        {
-            Db.Cities.Add(new City { Name = cityName });
-            await Db.SaveChangesAsync();
-            AllElements = await Db.Cities.ToListAsync();
-            StateHasChanged();
-        }
-    }
-    private async Task OpenDeleteDialogAsync()  
-    {
-        var options = new DialogOptions { CloseOnEscapeKey = true };
-
-        var dialog = await DialogService.ShowAsync<DeleteCityDialog>("Удалить Город", options);
-        var result = await dialog.Result;
-        if (result != null && result.Data is string IdName && !string.IsNullOrWhiteSpace(IdName))
-        {
-            var city = await Db.Cities.FindAsync(int.Parse(IdName));
-            Db.Cities.Remove(city);
-            await Db.SaveChangesAsync();
-            AllElements = await Db.Cities.ToListAsync();
-            StateHasChanged();
-        }
-    }
-}
