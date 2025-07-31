@@ -41,9 +41,9 @@ namespace MyBlazorApp.Components.Pages
             var result = await dialog.Result;
             if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
             {
-                Snackbar.Add($"Город {cityName} добавлен", Severity.Success);
                 Db.Cities.Add(new City { Name = cityName });
                 await Db.SaveChangesAsync();
+                Snackbar.Add($"Город {cityName} добавлен", Severity.Success);
                 AllElements = await Db.Cities.ToListAsync();
                 StateHasChanged();
             }
@@ -58,9 +58,9 @@ namespace MyBlazorApp.Components.Pages
 
             if (result == true)
             {
-                Snackbar.Add($"Удален Город: {city.Name}", Severity.Success);
                 Db.Cities.Remove(city);
                 await Db.SaveChangesAsync();
+                Snackbar.Add($"Удален Город: {city.Name}", Severity.Success);
                 AllElements = await Db.Cities.ToListAsync();
                 StateHasChanged();
             }

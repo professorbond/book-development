@@ -9,11 +9,19 @@
     </TitleContent> 
 
     <DialogContent>
-        <MudTextField @bind-Value="CityName" Label="Название города" Variant="Variant.Outlined" />
+        <MudForm @bind-IsValid = "@Success">
+            <MudTextField @bind-Value="CityName" 
+                          Label="Название города"
+                          Variant="Variant.Outlined"
+                          Required = "true"
+                          RequiredError="Поле должно быть заполнено!" 
+                          Validation="ValidateCityName"/>
+
+        </MudForm>
     </DialogContent>
 
     <DialogActions>
-        <MudButton OnClick="Cancel">Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="Submit">Добавить</MudButton>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled" Color="Color.Secondary" Class="mr-auto">Отмена</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit" Variant="Variant.Filled" Disabled="@(!Success)">Добавить</MudButton>
     </DialogActions>
 </MudDialog>

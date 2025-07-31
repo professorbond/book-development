@@ -14,21 +14,29 @@ namespace MyBlazorApp.Components.Pages
 
         private string CityName { get; set; }
 
+        private bool Success { get; set; }
+
+        private string ValidateCityName(string value)
+        {
+            if (value.Length < 2)
+            {
+                return "Название города слишком короткое";
+            }
+
+            if (value.Length > 50)
+            {
+                return "Название города слишком длинное";
+            }
+
+            if (Db.Cities.Any(c => c.Name.ToLower() == CityName.ToLower()))
+            {
+                return "такой город уже существует";
+            }
+            return null;
+        }
+
         private async Task Submit()
         {
-            var exists = await Db.Cities.AnyAsync(c => c.Name.ToLower() == CityName.ToLower());
-            if (exists == true)
-            {
-                Snackbar.Add("Такой город уже существует", Severity.Error);
-                return;
-            }
-
-            if (CityName.All(char.IsDigit))
-            {
-                Snackbar.Add("Название города не может состоять из цифр", Severity.Error);
-                return;
-            }
-
             MudDialog.Close(DialogResult.Ok(CityName));
         }
 
