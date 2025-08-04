@@ -9,9 +9,9 @@ namespace MyBlazorApp.Components.Pages
 {
     public partial class Cities : ComponentBase
     {
-        [Inject] private ISnackbar Snackbar { get; set; } 
-        [Inject] private AppDbContext Db { get; set; }
-        [Inject] private IDialogService DialogService { get; set; }
+        [Inject] private ISnackbar Snackbar { get; set; } = default!;
+        [Inject] private AppDbContext Db { get; set; } = default!;
+        [Inject] private IDialogService DialogService { get; set; } = default!;
 
         private List<City> AllElements = new();
         private string SearchString = string.Empty;
@@ -33,15 +33,15 @@ namespace MyBlazorApp.Components.Pages
             }
         }
 
-        private async Task OpenDialogAsync()
+        private async Task OpenCityDialogAsync()
         {
             var options = new DialogOptions { CloseOnEscapeKey = true };
 
-            var dialog = await DialogService.ShowAsync<AddCityDialog>("Добавить Город", options);
+            var dialog = await DialogService.ShowAsync<AddCityDialog>(" ", options);
             var result = await dialog.Result;
             if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
             {
-                Db.Cities.Add(new City { Name = cityName });
+                Db.Cities.Add(new City { Name = cityName });   
                 await Db.SaveChangesAsync();
                 Snackbar.Add($"Город {cityName} добавлен", Severity.Success);
                 AllElements = await Db.Cities.ToListAsync();

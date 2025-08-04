@@ -1,0 +1,40 @@
+@using MudBlazor
+@using MyBlazorApp.Data
+@using Microsoft.EntityFrameworkCore
+@namespace MyBlazorApp.Components.Pages
+<MudDialog>
+    <TitleContent>
+        Добавить Пользователя
+    </TitleContent>
+    
+    <DialogContent>
+        <MudForm @bind-IsValid="@Success">
+
+            <MudTextField @bind-Value="ContactFirstName"
+                        Label="Имя"
+                        Variant="Variant.Outlined"
+                        Required="true"
+                        RequiredError="Обязательна для Заполнения"
+                        Validation="ValidateContactName"/>
+
+            <MudTextField @bind-Value="ContactLastName"
+                        Label="Фамилия"
+                        Variant="Variant.Outlined"
+                        Required="true"
+                        RequiredError="Обязательна для Заполнения"
+                        Validation="ValidateContactName"/>
+
+            <MudTextField @bind-Value="ContactSecondName"
+                        Label="Отчество"
+                        Variant="Variant.Outlined"
+                        Required="true"
+                        RequiredError="Обязательна для Заполнения"
+                        Validation="ValidateContactName"/>
+        </MudForm>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel" ariant="Variant.Filled" Color="Color.Primary" Class="mr-auto">Отмена</MudButton>
+        <MudButton OnClick="Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!Success)">Добавить</MudButton>
+    </DialogActions>
+</MudDialog>

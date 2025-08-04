@@ -5,6 +5,10 @@
 @using MudBlazor
 @namespace MyBlazorApp.Components.Pages
 
+<MudButton OnClick="OpenContactDialogAsync" Variant="Variant.Filled" Color="Color.Primary">
+    Добавить Пользователя
+</MudButton>
+
 <MudTextField @bind-Value="_searchString"
               Placeholder="Поиск"
               Adornment="Adornment.Start"

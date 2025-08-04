@@ -7,12 +7,12 @@ namespace MyBlazorApp.Components.Pages
 {
     public partial class AddCityDialog : ComponentBase
     {
-        [Inject] private AppDbContext Db { get; set; }
-        [Inject] private ISnackbar Snackbar { get; set; }
+        [Inject] private AppDbContext Db { get; set; } = default!;
+        [Inject] private ISnackbar Snackbar { get; set; } = default!;
         [CascadingParameter]
-        private IMudDialogInstance MudDialog { get; set; }
+        private IMudDialogInstance MudDialog { get; set; } = default!;
 
-        private string CityName { get; set; }
+        private string CityName { get; set; } = default!;
 
         private bool Success { get; set; }
 
