@@ -35,14 +35,17 @@ namespace MyBlazorApp.Components.Pages
         }
         private async Task OpenContactDialogAsync()
         {
-            var options = new DialogOptions { CloseOnEscapeKey = true };
+            var options = new DialogOptions { CloseOnEscapeKey = true, BackgroundClass = "my-custom-class"  };
             var dialog = await DialogService.ShowAsync<AddContactDialog>(" ", options);
             var result = await dialog.Result;
-            Db.People.Add((Person)result.Data);
-            await Db.SaveChangesAsync();
-            Snackbar.Add($"Пользователь добавлен", Severity.Success);
-            AllElements = await Db.People.ToListAsync();
-            StateHasChanged();
+            if (result != null && result.Data is Person ContactResult)
+            {
+                Db.People.Add((Person)result.Data);
+                await Db.SaveChangesAsync();
+                Snackbar.Add($"Пользователь добавлен", Severity.Success);
+                AllElements = await Db.People.ToListAsync();
+                StateHasChanged();
+            }
         }
     }
 }    

@@ -35,7 +35,7 @@ namespace MyBlazorApp.Components.Pages
 
         private async Task OpenCityDialogAsync()
         {
-            var options = new DialogOptions { CloseOnEscapeKey = true };
+            var options = new DialogOptions { CloseOnEscapeKey = true};
 
             var dialog = await DialogService.ShowAsync<AddCityDialog>(" ", options);
             var result = await dialog.Result;
