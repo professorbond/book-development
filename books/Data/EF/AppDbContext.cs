@@ -78,7 +78,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 1,
-                    PhoneNumber = "+77978972679",
+                    PhoneNumber = "+7 (797) 897 2679",
                     IsBankLinked = true,
                     PhoneType = "сотовый",
                     PersonId = 1,
@@ -86,7 +86,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 2,
-                    PhoneNumber = "+77777777777",
+                    PhoneNumber = "+7 (777) 777 7777",
                     IsBankLinked = false,
                     PhoneType = "сотовый",
                     PersonId = 2,
@@ -94,7 +94,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 3,
-                    PhoneNumber = "+77765672456",
+                    PhoneNumber = "+7 (776) 567 2456",
                     IsBankLinked = true,
                     PhoneType = "сотовый",
                     PersonId = 3,
@@ -102,7 +102,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 4,
-                    PhoneNumber = "+77778976655",
+                    PhoneNumber = "+7 (777) 897 6655",
                     IsBankLinked = false,
                     PhoneType = "сотовый",
                     PersonId = 4,
@@ -110,7 +110,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 5,
-                    PhoneNumber = "+77770950095",
+                    PhoneNumber = "+7 (777) 095 0095",
                     IsBankLinked = true,
                     PhoneType = "сотовый",
                     PersonId = 5,
@@ -118,7 +118,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 6,
-                    PhoneNumber = "+77001112233",
+                    PhoneNumber = "+7 (700) 111 2233",
                     IsBankLinked = false,
                     PhoneType = "домашний",
                     PersonId = 1,
@@ -126,7 +126,7 @@ namespace MyBlazorApp.Data
                 new Phone
                 {
                     Id = 7,
-                    PhoneNumber = "+77005556677",
+                    PhoneNumber = "+7 (700) 555 6677",
                     IsBankLinked = true,
                     PhoneType = "рабочий",
                     PersonId = 2,

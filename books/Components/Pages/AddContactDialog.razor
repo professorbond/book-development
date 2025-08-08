@@ -2,7 +2,7 @@
 @using MyBlazorApp.Data
 @using Microsoft.EntityFrameworkCore
 @namespace MyBlazorApp.Components.Pages
-<MudDialog>
+<MudDialog MaxWidth="false" FullWidth="true" Style="width:1500px !important; max-width:1500px !important;">
     <TitleContent>
         Добавить Пользователя
     </TitleContent>
@@ -29,12 +29,47 @@
                         Variant="Variant.Outlined"
                         Required="true"
                         RequiredError="Обязательна для Заполнения"
-                        Validation="ValidateContactName"/>
+                        Validation="@((string value) => ValidatePhoneInput(value))"/>
+
+            @foreach (var phone in PhoneInputs.Select((value, index) => new { value, index }))
+            {
+                <div class="d-flex flex-wrap align-center mb-3" style="gap: 12px;">
+                    <MudTextField @bind-Value="PhoneInputs[phone.index].PhoneNumber"
+                                Label="Номер телефона"
+                                Variant="Variant.Outlined"
+                                Placeholder="+7 (___) ___-__-__"
+                                Mask=@(new PatternMask("+0 (000) 000 0000"))
+                                Adornment="Adornment.End"
+                                AdornmentIcon="@Icons.Material.Filled.Add"
+                                AdornmentColor="Color.Primary"
+                                OnAdornmentClick="@(() => AddPhone(phone.index))" 
+                                Validation="ValidatePhoneInput"/>
+                
+
+                    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary" Class="font-weight-bold">
+                        Наличие банка:
+                    </MudText>
+
+                    <MudRadioGroup T="bool" @bind-Value="PhoneInputs[phone.index].IsBankLinked" Class="d-flex align-center" Required="true" RequiredError="Должно быть выбрано наличие банка">
+                        <MudRadio Value="true">true</MudRadio>
+                        <MudRadio Value="false">false</MudRadio>
+                    </MudRadioGroup>
+
+                    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary" Class="font-weight-bold">
+                        Тип Телефона:
+                    </MudText>
+
+                    <MudRadioGroup T="String" @bind-Value="PhoneInputs[phone.index].PhoneType" Class="d-flex align-center" Required="true" RequiredError="Должен быть выбран тип телефона">
+                        <MudRadio Value="@("Мобильный")">Мобильный</MudRadio>
+                        <MudRadio Value="@("Стационарный")">Стационарный</MudRadio>
+                    </MudRadioGroup>
+                </div>
+            } 
         </MudForm>
     </DialogContent>
 
     <DialogActions>
-        <MudButton OnClick="Cancel" ariant="Variant.Filled" Color="Color.Primary" Class="mr-auto">Отмена</MudButton>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled" Color="Color.Primary" Class="mr-auto">Отмена</MudButton>
         <MudButton OnClick="Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!Success)">Добавить</MudButton>
     </DialogActions>
 </MudDialog>

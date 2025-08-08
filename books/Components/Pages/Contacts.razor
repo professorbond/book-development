@@ -35,7 +35,7 @@
         <PropertyColumn Property="x => x.LastName" Title="Фамилия" />
         <PropertyColumn Property="x => x.Note" Title="Заметка" />
         
-        <TemplateColumn Title="Мобила">
+        <TemplateColumn Title="Телефон">
             <CellTemplate>
                 @string.Join(", ", context.Item.Phones.Select(p => p.PhoneNumber))
             </CellTemplate>
