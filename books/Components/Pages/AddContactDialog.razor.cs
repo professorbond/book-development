@@ -38,7 +38,7 @@ namespace MyBlazorApp.Components.Pages
             {
                 return "Данный номер уже был введен!";
             }
-            if (Db.People.Any(c => c.Phones.Any(p => p.PhoneNumber == phonenumber)))
+            if (Db.Phones.Any(p => p.PhoneNumber == phonenumber))
                 {
                     return "Такой номер уже существует!";
                 }

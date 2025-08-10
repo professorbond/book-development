@@ -9,27 +9,28 @@
     
     <DialogContent>
         <MudForm @bind-IsValid="@Success">
+            <div class="d-flex flex-wrap mb-4" style="gap: 16px;">
+                <MudTextField @bind-Value="ContactFirstName"
+                            Label="Имя"
+                            Variant="Variant.Outlined"
+                            Required="true"
+                            RequiredError="Обязательна для Заполнения"
+                            Validation="ValidateContactName"/>
 
-            <MudTextField @bind-Value="ContactFirstName"
-                        Label="Имя"
-                        Variant="Variant.Outlined"
-                        Required="true"
-                        RequiredError="Обязательна для Заполнения"
-                        Validation="ValidateContactName"/>
+                <MudTextField @bind-Value="ContactLastName"
+                            Label="Фамилия"
+                            Variant="Variant.Outlined"
+                            Required="true"
+                            RequiredError="Обязательна для Заполнения"
+                            Validation="ValidateContactName"/>
 
-            <MudTextField @bind-Value="ContactLastName"
-                        Label="Фамилия"
-                        Variant="Variant.Outlined"
-                        Required="true"
-                        RequiredError="Обязательна для Заполнения"
-                        Validation="ValidateContactName"/>
-
-            <MudTextField @bind-Value="ContactSecondName"
-                        Label="Отчество"
-                        Variant="Variant.Outlined"
-                        Required="true"
-                        RequiredError="Обязательна для Заполнения"
-                        Validation="@((string value) => ValidatePhoneInput(value))"/>
+                <MudTextField @bind-Value="ContactSecondName"
+                            Label="Отчество"
+                            Variant="Variant.Outlined"
+                            Required="true"
+                            RequiredError="Обязательна для Заполнения"
+                            Validation="ValidateContactName"/>
+            </div>
 
             @foreach (var phone in PhoneInputs.Select((value, index) => new { value, index }))
             {
