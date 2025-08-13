@@ -27,16 +27,22 @@
              Hover="true"
              Dense="true">
     <Columns>
-        <PropertyColumn Property="x => x.Id" />
-        <PropertyColumn Property="x => x.Name" />
+        <PropertyColumn Property="x => x.Id" Editable="false" />
+        <PropertyColumn Property="x => x.Name" Editable="true"/>
         
         <TemplateColumn CellClass="d-flex justify-end">
             <CellTemplate>
+                <MudIconButton Size="@Size.Small" 
+                               Icon="@Icons.Material.Outlined.Edit" 
+                               OnClick="() => OpenEditCityDialogAsync(context.Item)" />
+
                 <MudIconButton Icon="@Icons.Material.Filled.Delete" 
                                Color="Color.Secondary"
                                OnClick="() => ConfirmDeleteCity(context.Item)" />
+
             </CellTemplate>
         </TemplateColumn>
+
     </Columns>
 </MudDataGrid>
 

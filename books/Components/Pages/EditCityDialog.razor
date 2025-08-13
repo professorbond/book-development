@@ -1,0 +1,26 @@
+@using MudBlazor
+@using MyBlazorApp.Data
+@using Microsoft.EntityFrameworkCore
+@namespace MyBlazorApp.Components.Pages
+<MudDialog>
+    <TitleContent>
+        Добавить Город
+    </TitleContent> 
+
+    <DialogContent>
+        <MudForm @bind-IsValid = "@Success">
+            <MudTextField @bind-Value="EditCity" 
+                          Label="Название города"
+                          Variant="Variant.Outlined"
+                          Required = "true"
+                          RequiredError="Поле должно быть заполнено!" 
+                          Validation="ValidateEditCity"/>
+
+        </MudForm>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled" Color="Color.Secondary" Class="mr-auto">Отмена</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit" Variant="Variant.Filled" Disabled="@(!Success)">Добавить</MudButton>
+    </DialogActions>
+</MudDialog>

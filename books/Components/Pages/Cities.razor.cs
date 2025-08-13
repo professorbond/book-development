@@ -1,12 +1,12 @@
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Components;
-using Microsoft.EntityFrameworkCore;
-using MudBlazor;
-using MyBlazorApp.Data;
-using MyBlazorApp.Data.Entities;
+    using System.Runtime.CompilerServices;
+    using Microsoft.AspNetCore.Components;
+    using Microsoft.EntityFrameworkCore;
+    using MudBlazor;
+    using MyBlazorApp.Data;
+    using MyBlazorApp.Data.Entities;
 
-namespace MyBlazorApp.Components.Pages
-{
+    namespace MyBlazorApp.Components.Pages
+    {
     public partial class Cities : ComponentBase
     {
         [Inject] private ISnackbar Snackbar { get; set; } = default!;
@@ -15,6 +15,7 @@ namespace MyBlazorApp.Components.Pages
 
         private List<City> AllElements = new();
         private string SearchString = string.Empty;
+        private bool _readOnly;
 
         protected override async Task OnInitializedAsync()
         {
@@ -35,13 +36,13 @@ namespace MyBlazorApp.Components.Pages
 
         private async Task OpenCityDialogAsync()
         {
-            var options = new DialogOptions { CloseOnEscapeKey = true};
+            var options = new DialogOptions { CloseOnEscapeKey = true };
 
             var dialog = await DialogService.ShowAsync<AddCityDialog>(" ", options);
             var result = await dialog.Result;
             if (result != null && result.Data is string cityName && !string.IsNullOrWhiteSpace(cityName))
             {
-                Db.Cities.Add(new City { Name = cityName });   
+                Db.Cities.Add(new City { Name = cityName });
                 await Db.SaveChangesAsync();
                 Snackbar.Add($"Город {cityName} добавлен", Severity.Success);
                 AllElements = await Db.Cities.ToListAsync();
@@ -65,6 +66,24 @@ namespace MyBlazorApp.Components.Pages
                 StateHasChanged();
             }
         }
-
+        private async Task OpenEditCityDialogAsync(City city)
+        {
+            var options = new DialogOptions { CloseOnEscapeKey = true };
+            var parameters = new DialogParameters
+            {
+                ["CurrentName"] = city.Name
+            };
+            var dialog = await DialogService.ShowAsync<EditCityDialog>(" ", parameters, options);
+            var result = await dialog.Result;
+            if (result != null && result.Data is string EditCityName)
+            {
+                city.Name = EditCityName;
+                Db.Cities.Update(city);
+                await Db.SaveChangesAsync();
+                Snackbar.Add($"Город {EditCityName} отредактирован", Severity.Success);
+                AllElements = await Db.Cities.OrderBy(c => c.Id).ToListAsync();
+                StateHasChanged();
+            }
+        } 
+        }
     }
-}
